@@ -4,22 +4,16 @@
     box-sizing: border-box;
 }
 
-body {
-    height: 100vh;
-    width: 100%;
-    margin: 0px auto;
-    background-color: rgb(35, 34, 34);
-    overflow-x: hidden;
+body{
+    background-color: rgb(30, 31, 41);
+    /* background-color: rgb(244, 244, 245); */
 }
 
 /* navbar */
 
-nav, .tags, .main {
-    width: 95%;
-    margin: 0px auto;
-}
-
 nav{
+    margin: 0 auto;
+    width: 95%;
     height: 72px;
     display: flex;
     align-items: center;
@@ -53,11 +47,14 @@ nav{
     font-size: 20px;
 }
 
+
+
 /* navbar */
 
 /* tags */
 .tags{
-    margin-bottom: 10px;
+    width: 95%;
+    margin: 0px auto 10px;
     display: flex;
     align-items: center;
 }
@@ -68,10 +65,9 @@ nav{
     border-radius: 20px;
     background-color: #fd6311;
     color: #fff;
-    border: 1px solid #682703;
+    border: 1px solid transparent;
     transition: all .2s ease-in;
     margin:10px 30px 0 0px;
-
     cursor: pointer;
 
 }
@@ -86,19 +82,23 @@ nav{
 
 /* content */
 
-.content {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    height: 80vh;
+.container {
+    width: 1400px;
+    margin: 20px auto;
+    columns: 5;
+    column-gap: 20px;
 }
 
-.img {
-    margin: 0px 15px 15px 0px;
-    max-width: 100%;
-    height:300px;
-    background-size: cover;
+.container .box {
+    width: 100%;
+    cursor: zoom-in;
+    break-inside: avoid;
+}
+
+.container .box img {
+    width: 100%;
     border-radius: 15px;
+    margin-bottom: 10px;
 }
 
 

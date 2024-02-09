@@ -1,6 +1,6 @@
 const tags = document.querySelector(".tags");
-const main = document.querySelector(".main");
-const content = document.querySelector(".content");
+const main = document.querySelector(".container");
+
 let images = [];
 
 function render() {
@@ -25,14 +25,18 @@ function render() {
 
   // filling images
   const allImages = images.forEach(i =>{
+    const content = document.createElement("box");
+    content.classList.add('box');
     const img = document.createElement('img');
-    img.src = `${i.url}`
-    img.classList.add('img');
+    img.src = `${i.url}`;
     content.appendChild(img);
     main.appendChild(content);
-
   })
+
+
+
 }
+
 
 getImages()
   .then((data) => {
