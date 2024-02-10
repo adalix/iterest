@@ -15,16 +15,20 @@ function render() {
   filteredTags.forEach((t) => {
     const tag = document.createElement("a");
     tag.classList.add("tagBtn");
-    tag.innerHTML = `<a>${t}</a>`;
+    tag.textContent = `${t}`;
     tags.appendChild(tag);
-    tag.addEventListener('click',(e)=>{
-      console.log(e.target)
+    tag.addEventListener('click',(el)=>{
+      console.log(el.target.textContent, tag.textContent)
+      images.filter(e => {
+       return e.category === el.target.textContent;
+      })
+      
     })
   });
   
 
   // filling images
-  const allImages = images.forEach(i =>{
+    images.forEach(i =>{
     const content = document.createElement("box");
     content.classList.add('box');
     const img = document.createElement('img');
@@ -32,6 +36,8 @@ function render() {
     content.appendChild(img);
     main.appendChild(content);
   })
+
+
 
 
 
