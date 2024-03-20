@@ -1,9 +1,13 @@
 const tags = document.querySelector(".tags");
 const main = document.querySelector(".container");
+const input = document.querySelector('.searchInput');
+
 
 let images = [];
+let filteredImages = [];
 
-function render() {
+// get tags;
+function renderTags() {
   const filteredTags = images.reduce((acc, image) => {
     if (!acc.includes(image.category)) {
       acc.push(image.category);
@@ -11,7 +15,6 @@ function render() {
     return acc;
   }, []);
 
-  // tags
   filteredTags.forEach((t) => {
     const tag = document.createElement("a");
     tag.classList.add("tagBtn");
@@ -19,40 +22,57 @@ function render() {
     tags.appendChild(tag);
     tag.addEventListener('click',(el)=>{
       console.log(el.target.textContent, tag.textContent)
-      images.filter(e => {
+      filteredImages = images.filter(e => {
        return e.category === el.target.textContent;
-      })
-      
+      });
+      if (filteredImages && filteredImages.length > 0) {
+        renderListContainer(filteredImages);
+      }
     })
   });
-  
+}
 
+function clearListContainer(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
+
+function renderListContainer(datas) {
+  clearListContainer(main);
   // filling images
-    images.forEach(i =>{
-    const content = document.createElement("box");
+  datas.forEach(i =>{
+    const content = document.createElement("div");
     content.classList.add('box');
+    content.id = `${i.name}`;
     const img = document.createElement('img');
     img.src = `${i.url}`;
     content.appendChild(img);
     main.appendChild(content);
-  })
-
-
-
-
-
+  });
 }
+
+// const filteredSearch = (term) => {
+//   images.filter((search) =>{
+//     console.log(search.)
+//   })
+// }
+
+// input.addEventListener('keyup', () => {
+//   const term = input.value.trim().toLowerCase();  
+//   filteredSearch(term)
+// })
+
 
 
 getImages()
   .then((data) => {
     images = data;
-    render("resolved");
+    renderTags();
+    renderListContainer(images);
   })
   .catch((err) => {
     console.log(err);
-    render("catch");
   });
 
-render();
 

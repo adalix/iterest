@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: rgb(30, 31, 41);
+    background-color: rgb(55, 56, 69);
     /* background-color: rgb(244, 244, 245); */
 }
 
@@ -83,24 +83,28 @@ nav{
 /* content */
 
 .container {
-    width: 1400px;
+    width: 1300px;
     margin: 20px auto;
-    columns: 5;
-    column-gap: 20px;
+    display:grid;
+    /* gap: 10px; */
+    grid-template-columns: repeat(4, 1fr);
 }
+
+
 
 .container .box {
-    width: 100%;
+    /* width: 100%; */
     cursor: zoom-in;
-    break-inside: avoid;
-}
-
-.container .box img {
-    width: 100%;
     border-radius: 15px;
-    margin-bottom: 10px;
 }
 
+.box img {
+    width: 100%;
+    max-width: 236px;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+}
 
 /* content */
 
