@@ -3,8 +3,15 @@ const main = document.querySelector(".container");
 const input = document.querySelector('.searchInput');
 
 
+
 let images = [];
 let filteredImages = [];
+
+
+function toggle(e){
+  document.body.classList.toggle('blur');
+  console.log(e.target)
+}
 
 // get tags;
 function renderTags() {
@@ -42,28 +49,18 @@ function renderListContainer(datas) {
   clearListContainer(main);
   // filling images
   datas.forEach(i =>{
-    const content = document.createElement("div");
-    content.classList.add('box');
-    content.id = `${i.name}`;
+    const imgBox = document.createElement("div");
+    imgBox.classList.add('box');
+    imgBox.id = `${i.name}`;
     const img = document.createElement('img');
     img.src = `${i.url}`;
-    content.appendChild(img);
-    main.appendChild(content);
+    imgBox.onclick = toggle;
+
+
+    imgBox.appendChild(img);
+    main.appendChild(imgBox);
   });
 }
-
-// const filteredSearch = (term) => {
-//   images.filter((search) =>{
-//     console.log(search.)
-//   })
-// }
-
-// input.addEventListener('keyup', () => {
-//   const term = input.value.trim().toLowerCase();  
-//   filteredSearch(term)
-// })
-
-
 
 getImages()
   .then((data) => {
