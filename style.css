@@ -5,14 +5,13 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     background-color: rgb(55, 56, 69);
 }
 
 .container {
     width: 1300px;
     margin: 0 auto;
-    /* position: relative; */
 }
 
 nav {
@@ -22,25 +21,25 @@ nav {
     flex-direction: column;
 }
 
-.top-section{
+.top-section {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.logo a{
+.logo a {
     color: #fff;
     text-decoration: none;
     font-size: 20px;
     font-weight: 600;
 }
 
-.searchBar{
+.searchBar {
     width: 800px;
     height: 48px;
 }
 
-.searchInput{
+.searchInput {
     width: 100%;
     height: 100%;
     border-radius: 25px;
@@ -55,14 +54,14 @@ nav {
     font-size: 20px;
 }
 
-.tags{
+.tags {
     width: 100%;
     padding-top: 20px;
     display: flex;
     align-items: center;
 }
 
-.tagBtn{
+.tagBtn {
     text-decoration: none;
     padding: 6px 15px;
     border-radius: 20px;
@@ -70,15 +69,17 @@ nav {
     color: #fff;
     border: 1px solid transparent;
     transition: all .2s ease-in;
-    margin:10px 30px 0 0px;
+    margin: 10px 30px 0 0px;
     cursor: pointer;
 
 }
+
 .tagBtn:hover {
     color: #fd6311;
     background-color: transparent;
-    border: 1px solid #fd6311 ;
+    border: 1px solid #fd6311;
 }
+
 .imgContainer {
     /* width: 1300px; */
     column-count: 5;
@@ -92,22 +93,19 @@ img {
     width: 100%;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 
-  .selectedImg{
+.selectedImg {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: auto;
     height: auto;
-    z-index: 999;;
+}
 
-  }
-
- .container.blur{
+.blur {
     filter: blur(6px);
     pointer-events: none;
     user-select: none;
-    overflow: hidden;
 }
