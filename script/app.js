@@ -1,16 +1,20 @@
 const tags = document.querySelector(".tags");
-const main = document.querySelector(".container");
+const main = document.querySelector(".imgContainer");
 const input = document.querySelector('.searchInput');
-
-
 
 let images = [];
 let filteredImages = [];
 
 
-function toggle(e){
+
+input.addEventListener('keyup', searchItem);
+
+function clickedImg(e){
+  const m = document.querySelector('.overlay')
+  m.appendChild(e.target)
   document.body.classList.toggle('blur');
-  console.log(e.target)
+  e.target.classList.add('selectedImg')
+  console.log('clicked', e.target)
 }
 
 // get tags;
@@ -54,12 +58,19 @@ function renderListContainer(datas) {
     imgBox.id = `${i.name}`;
     const img = document.createElement('img');
     img.src = `${i.url}`;
-    imgBox.onclick = toggle;
-
+    img.addEventListener('click', clickedImg)
 
     imgBox.appendChild(img);
     main.appendChild(imgBox);
+    
   });
+}
+
+function searchItem(e){
+  let item = e.target.value;
+  item = item.toLowerCase();
+  filteredData = images.filter(img => img.category.toLowerCase().includes(item));
+  renderListContainer(filteredData);
 }
 
 getImages()
@@ -71,5 +82,3 @@ getImages()
   .catch((err) => {
     console.log(err);
   });
-
-
