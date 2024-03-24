@@ -1,19 +1,18 @@
 const tags = document.querySelector(".tags");
 const main = document.querySelector(".imgContainer");
 const input = document.querySelector('.searchInput');
+const overlay = document.querySelector('.overlay');
+const container = document.querySelector('.container');
 
 let images = [];
 let filteredImages = [];
 
-
-
 input.addEventListener('keyup', searchItem);
 
 function clickedImg(e){
-  const m = document.querySelector('.overlay')
-  m.appendChild(e.target)
-  document.body.classList.toggle('blur');
-  e.target.classList.add('selectedImg')
+  e.target.classList.add('selectedImg');
+  overlay.appendChild(e.target)
+  container.classList.toggle('blur');
   console.log('clicked', e.target)
 }
 
