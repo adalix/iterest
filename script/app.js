@@ -4,6 +4,7 @@ const input = document.querySelector('.searchInput');
 const overlay = document.querySelector('.overlay');
 const container = document.querySelector('.container');
 
+
 let images = [];
 let filteredImages = [];
 
@@ -65,10 +66,25 @@ function renderListContainer(datas) {
   });
 }
 
+function renderNoData(){
+  let errorDiv = document.getElementById('errorDiv');
+    console.log(errorDiv)
+    if(!errorDiv){
+      errorDiv = document.createElement('div');
+      errorDiv.id = 'errorDiv';
+    }else {
+      clearListContainer(errorDiv);
+    }
+    errorDiv.innerHTML = `<p style='color:white'>no result</p>`;
+    container.appendChild(errorDiv);
+}
 function searchItem(e){
   let item = e.target.value;
   item = item.toLowerCase();
   filteredData = images.filter(img => img.category.toLowerCase().includes(item));
+  if (filteredData.length === 0){
+    renderNoData();
+  }
   renderListContainer(filteredData);
 }
 
