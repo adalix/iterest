@@ -1,6 +1,6 @@
 const Navbar = () => {
   return (
-    <nav className="my-5 mx-auto flex flex-col">
+    <nav className=" mt-8 mb-5 mx-auto flex flex-col">
       <div className="flex items-center justify-between">
         <div className="logo">
           <a href="#" className="text-white decoration-none font-semibold text-xl">images</a>
@@ -13,7 +13,7 @@ const Navbar = () => {
             name="search"
           />
         </div>
-        <div className="username bg-gray-400 w-10 h-10 rounded-full text-white text-xl text-center pt-1">ig</div>
+        <div className="username bg-gray-200 w-9 h-9 rounded-full text-teal-600 text-lg flex items-center justify-center ring-4 ring-teal-500 cursor-pointer">ig</div>
       </div>
 
       <div className="tags w-full pt-5 flex items-center">
