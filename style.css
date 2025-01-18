@@ -69,7 +69,7 @@ nav {
     color: #fff;
     border: 1px solid transparent;
     transition: all .2s ease-in;
-    margin: 10px 30px 0 0px;
+    margin: 10px 10px 0 0px;
     cursor: pointer;
 
 }
@@ -96,16 +96,73 @@ img {
 }
 
 .selectedImg {
+    display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    height: auto;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
 .blur {
     filter: blur(6px);
     pointer-events: none;
     user-select: none;
+}
+.lightbox{
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox img{
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 20px;
+    object-fit: contain;
+}
+
+.lightbox .prev,
+.lightbox .next{
+    height: 50px;
+    width: 50px;
+    position:absolute;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.lightbox .prev{
+    left: 20px;
+}
+
+.lightbox .next{
+    right: 20px;
+}
+
+.lightbox .close {
+position: absolute;
+top: 20px;
+right: 20px;
+font-size: 20px;
+color: #ffffff;    
+background: rgba(0, 0, 0, 0.8);
+border: none;
+cursor: pointer;
+z-index: 1000;
 }
