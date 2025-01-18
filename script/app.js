@@ -1,20 +1,34 @@
 const tags = document.querySelector(".tags");
 const main = document.querySelector(".imgContainer");
 const input = document.querySelector('.searchInput');
-const overlay = document.querySelector('.overlay');
 const container = document.querySelector('.container');
+const lightbox = document.querySelector('.lightbox')
+const lightboxImg = lightbox.querySelector('img')
+const closeBtn = lightbox.querySelector('.close')
+const prevBtn = lightbox.querySelector('.prev')
+const nextBtn = lightbox.querySelector('.next')
 
 
 let images = [];
 let filteredImages = [];
 
-input.addEventListener('keyup', searchItem);
+input.addEventListener('keyup', (e)=>{
+  let item = e.target.value;
+  item = item.toLowerCase();
+  const filteredData = images.filter(img => img.category.toLowerCase().includes(item));
+  if (filteredData.length === 0){
+    renderNoData();
+  }
+  renderListContainer(filteredData);
+});
+
+closeBtn.addEventListener('click', ()=>{
+  lightbox.style.display = 'none'
+})
 
 function clickedImg(e){
-  e.target.classList.add('selectedImg');
-  overlay.appendChild(e.target)
-  container.classList.toggle('blur');
-  console.log('clicked', e.target)
+  lightbox.style.display = "flex";
+  lightboxImg.src = e.target.src;
 }
 
 // get tags;
@@ -32,7 +46,6 @@ function renderTags() {
     tag.textContent = `${t}`;
     tags.appendChild(tag);
     tag.addEventListener('click',(el)=>{
-      console.log(el.target.textContent, tag.textContent)
       filteredImages = images.filter(e => {
        return e.category === el.target.textContent;
       });
@@ -62,31 +75,35 @@ function renderListContainer(datas) {
 
     imgBox.appendChild(img);
     main.appendChild(imgBox);
-    
   });
 }
 
 function renderNoData(){
   let errorDiv = document.getElementById('errorDiv');
-    console.log(errorDiv)
     if(!errorDiv){
       errorDiv = document.createElement('div');
       errorDiv.id = 'errorDiv';
+      
     }else {
+      errorDiv.remove()
       clearListContainer(errorDiv);
     }
+
     errorDiv.innerHTML = `<p style='color:white'>no result</p>`;
     container.appendChild(errorDiv);
+
 }
-function searchItem(e){
-  let item = e.target.value;
-  item = item.toLowerCase();
-  filteredData = images.filter(img => img.category.toLowerCase().includes(item));
-  if (filteredData.length === 0){
-    renderNoData();
-  }
-  renderListContainer(filteredData);
-}
+
+
+// function searchItem(e){
+//   let item = e.target.value;
+//   item = item.toLowerCase();
+//   filteredData = images.filter(img => img.category.toLowerCase().includes(item));
+//   if (filteredData.length === 0){
+//     renderNoData();
+//   }
+//   renderListContainer(filteredData);
+// }
 
 getImages()
   .then((data) => {
