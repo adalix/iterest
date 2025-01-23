@@ -12,6 +12,7 @@ body {
 .container {
     width: 1300px;
     margin: 0 auto;
+    position: relative;
 }
 
 nav {
@@ -166,3 +167,17 @@ border: none;
 cursor: pointer;
 z-index: 1000;
 }
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid;
+    border-color: #c91414 #df0e0e00;
+    transform: translate(-50%,-50%);
+    animation: l1 1s infinite;
+  }
+  @keyframes l1 {to{transform: rotate(.5turn)}}
