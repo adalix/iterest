@@ -7,10 +7,22 @@ const lightboxImg = lightbox.querySelector('img')
 const closeBtn = lightbox.querySelector('.close')
 const prevBtn = lightbox.querySelector('.prev')
 const nextBtn = lightbox.querySelector('.next')
+const addForm = document.querySelector('.add')
 
 
 let images = [];
 let filteredImages = [];
+
+
+add.addEventListener('click',()=>{
+  
+})
+
+function addImageForm(){
+main.style.display = 'none'
+}
+
+addImageForm()
 
 input.addEventListener('keyup', (e)=>{
   let item = e.target.value;
