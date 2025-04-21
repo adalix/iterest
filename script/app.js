@@ -7,22 +7,47 @@ const lightboxImg = lightbox.querySelector('img')
 const closeBtn = lightbox.querySelector('.close')
 const prevBtn = lightbox.querySelector('.prev')
 const nextBtn = lightbox.querySelector('.next')
-const addForm = document.querySelector('.add')
+const addForm = document.querySelector('.add-image')
+const form = document.querySelector('.add-image-form')
 
 
 let images = [];
 let filteredImages = [];
 
 
-add.addEventListener('click',()=>{
+let isForm = true
+addForm.addEventListener('click',()=>{
+  if(isForm = true) {
+        main.style.display = 'none'
+        form.style.display = 'block'
+
+      // main.style.display = 'block'
+      // form.style.display = "none"
+  }
+  console.log(isForm )
+
+  // if(isForm) {
   
+  // }else {
+  //   isForm = false
+  
+  // }
+  // isForm ? form.style.display = 'block' : form.style.display = "none"
+  // console.log(isForm)
+  // addImageForm()
 })
 
+
+
 function addImageForm(){
-main.style.display = 'none'
+  let isForm = false
+  
+
+  isForm ? form.style.display = 'block' : form.style.display = "none"
+  
 }
 
-addImageForm()
+// addImageForm()
 
 input.addEventListener('keyup', (e)=>{
   let item = e.target.value;
